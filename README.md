@@ -1,5 +1,7 @@
 # ziconews
 
+## تطبيق اخبار باستخدام لغه فلاتر مع قواعد بيانات php and getX
+
 A new Flutter project.
 
 ## Getting Started
