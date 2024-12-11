@@ -21,6 +21,7 @@ abstract class Images{
  // static const icon="assets/Images/zico.png";
  static const icon="assets/Images/icon.png";
  static const icon1="assets/Images/zico.jpg";
+ static const icon2="assets/Images/zico.jpg";
 
 
 
