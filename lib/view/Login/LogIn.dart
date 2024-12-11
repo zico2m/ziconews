@@ -27,7 +27,7 @@ class LogInPage1 extends StatelessWidget {
               children: [
                 Image.asset(Images.icon,height: 250,width: 250,),
                 customTextFormField1(
-                  hintText: "email",
+                  hintText: "Email",
                   icon: Icons.email,
                   avatarColor: primary4,
                   validator: logic1.Validatoremail,
