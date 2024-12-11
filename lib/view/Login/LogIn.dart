@@ -20,7 +20,7 @@ class LogInPage1 extends StatelessWidget {
       ),
       child: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(top: 100),
+          margin: EdgeInsets.only(top: 150),
           child: Form(
             key: logic1.Data.formKey,
             child: Column(
