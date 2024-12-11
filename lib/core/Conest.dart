@@ -19,7 +19,8 @@ abstract class Images{
  static const profil="assets/Images/prof.jpg";
  static const back="assets/Images/pack.jpg";
  // static const icon="assets/Images/zico.png";
- static const icon="assets/Images/ccc.png";
+ static const icon="assets/Images/icon.png";
+ static const icon1="assets/Images/zico.jpg";
 
 
 

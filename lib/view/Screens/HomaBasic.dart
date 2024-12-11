@@ -21,6 +21,8 @@ class Homabasic extends StatelessWidget {
       Home(),
       Profail(),
     ];
+
+
     return Scaffold(
       appBar: AppBar(
         actions: [

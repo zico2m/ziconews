@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'Conest.dart';
 import 'Function.dart';
 
 class Drwer extends StatelessWidget {
@@ -28,7 +29,7 @@ class Drwer extends StatelessWidget {
                 style: TextStyle(),
               ),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("images/z.jpg"),
+                backgroundImage: AssetImage(Images.Image1),
               ),
             )),
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ziconews/view/Login/LogIn.dart';
 import '../../Core/Conest.dart';
 import '../../controller/Logic_SInIn.dart';
 import '../Widgets/Widget.dart';
@@ -65,7 +66,7 @@ class Sinin extends StatelessWidget {
                   margin: EdgeInsets.only(top: 20, left: 50),
                   child: TextButton(
                       onPressed: () {
-                        Logic.Verificatoin();
+                        Get.to(LogInPage1());
                       },
                       child: Text(
                         "I have an acont",
