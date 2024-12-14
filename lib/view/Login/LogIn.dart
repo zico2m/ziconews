@@ -42,7 +42,8 @@ class LogInPage1 extends StatelessWidget {
                     togglePasswordVisibility: logic1.togglePasswordVisibility,
                     validator: logic1.Validatorpassowrd,
                     controller: logic1.Data.pass,
-                    fillColor: primary3),
+                    // fillColor: primary3),
+                ),
                 Container(
                   margin: EdgeInsets.only(left: 250),
                   child: TextButton(
@@ -56,13 +57,16 @@ class LogInPage1 extends StatelessWidget {
                   height: 15,
                 ),
                 customButton(
-                  onPressed: () {
-                    logic1.Verification();
-                  },
+
                   child: Text(
                     'LogIN',
                     style: TextStyle(fontSize: 20),
                   ),
+
+                  function: (){
+                    logic1.Verification();
+
+                  }
                 ),
                 Container(
                   alignment: Alignment.center,
