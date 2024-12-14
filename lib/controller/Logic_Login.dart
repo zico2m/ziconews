@@ -3,12 +3,16 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../core/Conest.dart';
 import '../modle/Data_login.dart';
+import '../modle/auth_service.dart';
 import '../view/Screens/HomaBasic.dart';
 
 class LogInLogic extends GetxController {
+  final AuthService authService = AuthService();
+  final box = GetStorage();
   final Data = DataLogin();
 
   String? Validatoremail(String? value) {
@@ -34,6 +38,31 @@ class LogInLogic extends GetxController {
   }
 
 
+  Future<void>SignIn()async{
+
+    final response = await authService.signIn(Data.EmailControler.text, Data.pass.text);
+
+    if (response['status'] == 'ok') {
+
+      box.write('isLoggedIn', true);
+      // box.write('name', Data.USername.text );
+      // box.write('email', Data.EmailControler.text);
+
+      Data.USername.clear();
+      Data.EmailControler.clear();
+      Data.pass.clear();
+
+
+      Get.snackbar("Success", "تم التسجيل بنجاح");
+      Get.to(Homabasic()); // الانتقال إلى الصفحة الرئيسية
+    } else {
+      Get.snackbar("Error", response['message']);
+    }
+
+
+  }
+
+
 
   void Verification() {
     if (Data.formKey.currentState!.validate()) {
@@ -56,19 +85,7 @@ class LogInLogic extends GetxController {
       Future.delayed(Duration(seconds: 3), () {
         Get.back(); // إغلاق مؤشر التحميل
 
-        if (Data.EmailControler.text == 'zico' && Data.pass.text == '12') {
-          Get.to(
-            () => Homabasic(),
-            transition: Transition.size,
-          );
-        } else {
-          Get.snackbar(
-            'خطأ',
-            'يرجى التحقق من كلمة السر او البريد',
-            backgroundColor: Colors.orange,
-            snackPosition: SnackPosition.TOP,
-          );
-        }
+        SignIn();
       });
     }
   }

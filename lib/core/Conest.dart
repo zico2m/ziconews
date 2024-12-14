@@ -50,7 +50,7 @@ abstract class Styles{
   fontSize: 25,
   fontWeight: FontWeight.bold,
   textBaseline: TextBaseline.ideographic,
-  // color: primary3
+  color: primary3
 
 
 

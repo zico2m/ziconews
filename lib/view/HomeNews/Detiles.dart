@@ -4,14 +4,14 @@ import 'package:like_button/like_button.dart';
 import '../../Core/Conest.dart';
 
 class Detiles extends StatelessWidget {
-  final String title1;
-  final String description1;
-  final String imagePath1;
+  // final String title1;
+  // final String description1;
+  // final String imagePath1;
+  final dynamic listnews;
+
 
   Detiles({
-    required this.title1,
-    required this.description1,
-    required this.imagePath1,
+   this.listnews
   });
   @override
   Widget build(BuildContext context) {
@@ -28,30 +28,46 @@ class Detiles extends StatelessWidget {
             Container(
               width: double.infinity,
               height: 250,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 8,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(imagePath1),
-                ),
-              ),
+              // decoration: BoxDecoration(
+              //   borderRadius: BorderRadius.circular(15),
+              //   boxShadow: [
+              //     BoxShadow(
+              //       color: Colors.black26,
+              //       blurRadius: 8,
+              //       offset: Offset(0, 4),
+              //     ),
+              //   ],
+              //   image: DecorationImage(
+              //     fit: BoxFit.cover,
+              //       image: Image.network(),
+              //   ),
+              // ),
+
+             child: Image.network('http://10.0.2.2/Signup${listnews['imagee']}',
+             errorBuilder:  (context,error,stckTrack){
+               return Container(
+                 height: 400,
+                 color: Colors.grey,
+                 child: Center(
+                   child: Text("error in photo"),
+
+                 ),
+
+               );
+
+             },
+             ),
+
             ),
             SizedBox(height: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(title1,
-                    textDirection: TextDirection.ltr, style: Styles.Title),
+                Text(listnews['title']?? "erre in title",
+                    textDirection: TextDirection.rtl,style: TextStyle(fontSize: 30,fontWeight:FontWeight.bold,textBaseline: TextBaseline.alphabetic ),),
                 SizedBox(height: 8),
                 Text(
-                  description1,
+                  listnews['content'],
                   textDirection: TextDirection.rtl,
                   style: Styles.Discrib,
                 ),

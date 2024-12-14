@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import '../../Core/Conest.dart';
 import '../../controller/ControlHome.dart';
 import '../HomeNews/HomeNews.dart';
+import '../HomeNews/NewsPost.dart';
 
 class Home extends StatelessWidget {
   final Controlhome control = Get.put(Controlhome());
@@ -72,7 +73,7 @@ class Home extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          "dnvdljvkdvjknln hvhzdvhzk cdhjvzjk ",
+                          "live News ",
                           textAlign: TextAlign.center,
                           style: Styles.TitleSmal,
                         )
@@ -94,6 +95,8 @@ class Home extends StatelessWidget {
             InkWell(
                 onTap: () {
                   // Navigator.push(context, MaterialPageRoute(builder: (k)=>News()));
+                  Navigator.push(context, MaterialPageRoute(builder: (k)=>NewsPage()));
+
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
@@ -106,7 +109,7 @@ class Home extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          "dnvdljvkdvjknln hvhzdvhzk cdhjvzjk ",
+                          "Last News In The world",
                           textAlign: TextAlign.center,
                           style: Styles.TitleSmal,
                         )
@@ -169,7 +172,6 @@ class Home extends StatelessWidget {
                 )),
             InkWell(
                 onTap: () {
-                  // Navigator.push(context, MaterialPageRoute(builder: (k)=>News()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
@@ -182,7 +184,7 @@ class Home extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          "dnvdljvkdvjknln hvhzdvhzk cdhjvzjk ",
+                          "dnvdljvkdvjknkllk ",
                           textAlign: TextAlign.center,
                           style: Styles.TitleSmal,
                         )
@@ -207,3 +209,4 @@ class Home extends StatelessWidget {
     );
   }
 }
+

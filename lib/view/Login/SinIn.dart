@@ -4,6 +4,7 @@ import 'package:ziconews/view/Login/LogIn.dart';
 import '../../Core/Conest.dart';
 import '../../controller/Logic_SInIn.dart';
 import '../Widgets/Widget.dart';
+import '../Widgets/j.dart';
 import 'View_body.dart';
 
 class Sinin extends StatelessWidget {
@@ -48,19 +49,23 @@ class Sinin extends StatelessWidget {
                   validator: Logic.Validatorpassowrd,
                   togglePasswordVisibility: Logic.togglePasswordVisibility,
                   controller: Logic.logic1.pass,
-                  fillColor: primary3,
+                  // fillColor: primary3,
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 customButton(
                     child: Text(
-                      "LogIN",
-                      style: TextStyle(color: primary3),
+                      "Create an accont",
+                      style: Styles.Title,
+
                     ),
-                    onPressed: () {
+                    function: () {
                       Logic.Verificatoin();
-                    }),
+                    },
+                  Radius: 20
+
+                    ),
                 Container(
                   alignment: Alignment.center,
                   margin: EdgeInsets.only(top: 20, left: 50),
@@ -80,11 +85,11 @@ class Sinin extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                Roww(),
+                Widgets.row1,
                 SizedBox(
                   height: 10,
                 ),
-                Fcebook(),
+                Widgets.row,
               ],
             ),
           ),

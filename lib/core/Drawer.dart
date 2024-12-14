@@ -1,13 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
+import '../controller/Logic_Login.dart';
+import '../view/Login/LogIn.dart';
+import '../view/Screens/profaile.dart';
 import 'Conest.dart';
 import 'Function.dart';
 
 class Drwer extends StatelessWidget {
+
+
+  final box = GetStorage();
+
+
   @override
   Widget build(BuildContext context) {
+
+    // String name = box.read('name') ?? 'اسم غير متوفر';
+    // String email = box.read('email') ?? 'بريد غير متوفر';
+
     // TODO: implement build
     return Drawer(
       width: 250,
@@ -15,21 +28,29 @@ class Drwer extends StatelessWidget {
           Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         InkWell(
             onTap: () {
-              // Get.to(() => Profail(),
-              //     transition: Transition.rightToLeft
-              // );
+              Get.to(() => Profaile(),
+                  transition: Transition.rightToLeft
+              );
             },
             child: UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+              color: primary2
+
+              ),
+
               accountName: Text(
-                "Zico2m",
-                style: TextStyle(),
+                 box.read('name'),
+
+
+                style:TextStyle(fontSize: 20),
               ),
               accountEmail: Text(
-                "zico2001s@yahoo.com",
-                style: TextStyle(),
+                box.read('email'),
+                style: Styles.Discrib,
               ),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage(Images.Image1),
+                backgroundImage: AssetImage("assetName") ,
+
               ),
             )),
 
@@ -62,7 +83,14 @@ class Drwer extends StatelessWidget {
         NwesRow(
             function: () {
               // Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder)=>
+
               //     home()));
+              box.remove('isLoggedIn');
+              box.remove('name');
+              box.remove('email');
+              Get.snackbar('تسجيل الخروج', 'تم تسجيل الخروج بنجاح');
+              Get.offAll(() => LogInPage1());
+
             },
             icon: Icons.logout_sharp,
             text: "Log Out"),
@@ -93,3 +121,35 @@ Widget NwesRow({
     },
   );
 }
+
+
+// class Drwer extends StatelessWidget {
+//   final box = GetStorage();
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     // استرجاع البيانات المخزنة من GetStorage
+//     String userName = box.read('name') ;
+//     String userEmail = box.read('email') ;
+//
+//     return Drawer(
+//       child: ListView(
+//         padding: EdgeInsets.zero,
+//         children: <Widget>[
+//           UserAccountsDrawerHeader(
+//             accountName: Text(userName),  // استخدام اسم المستخدم من GetStorage
+//             accountEmail: Text(userEmail),  // استخدام البريد الإلكتروني من GetStorage
+//             currentAccountPicture: CircleAvatar(
+//               backgroundColor: Colors.orange,
+//               child: Text(
+//                 userName.isNotEmpty ? userName[0].toUpperCase() : '',
+//                 style: TextStyle(fontSize: 40.0),
+//               ),
+//             ),
+//           ),
+//           // باقي عناصر الـ Drawer
+//         ],
+//       ),
+//     );
+//   }
+// }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../Core/Conest.dart';
 import '../../Core/Drawer.dart';
+import '../../core/Drawer.dart';
 import 'Detiles.dart';
 
 class Homenews extends StatelessWidget {
@@ -9,49 +10,39 @@ class Homenews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-
-
-
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: primary,
-
-
-
-
         leading: Builder(builder: (BuildContext context) {
-          return IconButton(icon: Icon(Icons.menu,color: primary3, ),
+          return IconButton(
+              icon: Icon(
+                Icons.menu,
+                color: primary3,
+              ),
               onPressed: () {
                 Scaffold.of(context).openDrawer();
-              }
-          );
-        }
-        ),
-
-
-
+              });
+        }),
       ),
-
 
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: Column(
-
             children: [
-
-
-
               NewsSport(
                 context,
-                title: "  ابو عبيدة: استهدفنا بعشرات الصواريخ قاعدة ومطار رامات دافيد دعما لشعبنا الفلسطيني وإسنادا لمقاومتهحزب الله",
-                describ: "حزب الله: استهدفنا بعشرات الصواريخ قاعدة ومطار رامات دافيد دعما لشعبنا الفلسطيني وإسنادا لمقاومته",
+                title:
+                    "  ابو عبيدة: استهدفنا بعشرات الصواريخ قاعدة ومطار رامات دافيد دعما لشعبنا الفلسطيني وإسنادا لمقاومتهحزب الله",
+                describ:
+                    "حزب الله: استهدفنا بعشرات الصواريخ قاعدة ومطار رامات دافيد دعما لشعبنا الفلسطيني وإسنادا لمقاومته",
                 imagpath: Images.Image1,
               ),
               NewsSport(
                 context,
                 title: "نتنياهو في ورطة",
-                describ: "يبدو واضحا اليوم أنه من الصعب أن تجد أحدا من المسؤولين الإسرائيليين يتحدث عن تحقيق مكاسب لهذه الحرب سوى رئيس حكومة الاحتلال، الذي يردد شعار النصر الحاسم الساحق، فبعد أكثر من 200 يوم على اندلاع الحرب لم تحقق إسرائيل أهدافها في أي ساحة من ساحات القتال ولا حتى في الجانب السياسي، ولا يزال الأسرى الإسرائيليين في قبضة المقاومة، وهذا ما يعترف به الإعلام الإسرائيلي نفسه.",
+                describ:
+                    "يبدو واضحا اليوم أنه من الصعب أن تجد أحدا من المسؤولين الإسرائيليين يتحدث عن تحقيق مكاسب لهذه الحرب سوى رئيس حكومة الاحتلال، الذي يردد شعار النصر الحاسم الساحق، فبعد أكثر من 200 يوم على اندلاع الحرب لم تحقق إسرائيل أهدافها في أي ساحة من ساحات القتال ولا حتى في الجانب السياسي، ولا يزال الأسرى الإسرائيليين في قبضة المقاومة، وهذا ما يعترف به الإعلام الإسرائيلي نفسه.",
                 imagpath: Images.Image22,
               ),
               NewsSport(
@@ -64,34 +55,33 @@ class Homenews extends StatelessWidget {
                     "من بطولة دوري الأمم الأوروب27 من عمر الشوط الأول",
                 imagpath: Images.Image2,
               ),
-
               NewsSport(
                 context,
-                title: " حزب الله: استهدفنا بعشرات الصواريخ قاعدة ومطار رامات دافيد دعما لشعبنا الفلسطيني وإسنادا لمقاومتهحزب الله",
-                describ: "حزب الله: استهدفنا بعشرات الصواريخ قاعدة ومطار رامات دافيد دعما لشعبنا الفلسطيني وإسنادا لمقاومته",
+                title:
+                    " حزب الله: استهدفنا بعشرات الصواريخ قاعدة ومطار رامات دافيد دعما لشعبنا الفلسطيني وإسنادا لمقاومتهحزب الله",
+                describ:
+                    "حزب الله: استهدفنا بعشرات الصواريخ قاعدة ومطار رامات دافيد دعما لشعبنا الفلسطيني وإسنادا لمقاومته",
                 imagpath: Images.Image2,
               ),
               NewsSport(
                 context,
                 title: "نتنياهو في ورطة",
-                describ: "يبدو واضحا اليوم أنه من الصعب أن تجد أحدا من المسؤولين الإسرائيليين يتحدث عن تحقيق مكاسب لهذه الحرب سوى رئيس حكومة الاحتلال، الذي يردد شعار النصر الحاسم الساحق، فبعد أكثر من 200 يوم على اندلاع الحرب لم تحقق إسرائيل أهدافها في أي ساحة من ساحات القتال ولا حتى في الجانب السياسي، ولا يزال الأسرى الإسرائيليين في قبضة المقاومة، وهذا ما يعترف به الإعلام الإسرائيلي نفسه.",
+                describ:
+                    "يبدو واضحا اليوم أنه من الصعب أن تجد أحدا من المسؤولين الإسرائيليين يتحدث عن تحقيق مكاسب لهذه الحرب سوى رئيس حكومة الاحتلال، الذي يردد شعار النصر الحاسم الساحق، فبعد أكثر من 200 يوم على اندلاع الحرب لم تحقق إسرائيل أهدافها في أي ساحة من ساحات القتال ولا حتى في الجانب السياسي، ولا يزال الأسرى الإسرائيليين في قبضة المقاومة، وهذا ما يعترف به الإعلام الإسرائيلي نفسه.",
                 imagpath: Images.Image,
               ),
-
-
             ],
-
           ),
         ),
       ),
 
-      drawer: Drwer(),
-
+      // drawer: drwer(),
     );
 
-
   }
-  Widget NewsSport(BuildContext context, {
+
+  Widget NewsSport(
+    BuildContext context, {
     required String title,
     required String describ,
     required String imagpath,
@@ -102,9 +92,9 @@ class Homenews extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => Detiles(
-              title1: title,
-              description1: describ,
-              imagePath1: imagpath,
+              // title1: title,
+              // description1: describ,
+              // imagePath1: imagpath,
             ),
           ),
         );
@@ -121,13 +111,13 @@ class Homenews extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Stack(
-
                 children: [
                   Container(
                     width: double.infinity,
                     height: 200,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+                      borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(15)),
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage(imagpath),
@@ -135,7 +125,6 @@ class Homenews extends StatelessWidget {
                     ),
                   ),
                   // الصورة المصغرة
-
                 ],
               ),
             ),

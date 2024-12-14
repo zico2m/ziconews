@@ -1,17 +1,16 @@
-
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:ziconews/view/Screens/Home.dart';
 
 import '../core/Conest.dart';
 import '../modle/Data_login.dart';
-import 'package:http/http.dart' as http;
 
-
+import '../modle/auth_service.dart';
+import '../view/Screens/HomaBasic.dart';
+import '../view/Screens/Home.dart';
 
 // class LogicSinin extends GetxController{
 //
@@ -68,6 +67,34 @@ import 'package:http/http.dart' as http;
 
 class LogicSinin extends GetxController {
   final DataLogin logic1 = DataLogin();
+  final AuthService authService = AuthService();
+  final box = GetStorage();
+
+  
+  Future<void> SignUp() async {
+    final response = await authService.signUp(logic1.USername.text, logic1.EmailControler.text, logic1.pass.text);
+
+    if (response['status'] == 'ok') {
+      
+      box.write('isLoggedIn', true);
+      box.write('name', logic1.USername.text );
+      box.write('email', logic1.EmailControler.text);
+
+      logic1.USername.clear();
+      logic1.EmailControler.clear();
+      logic1.pass.clear();
+
+      
+      Get.snackbar("Success", "تم التسجيل بنجاح");
+      Get.to(Homabasic()); // الانتقال إلى الصفحة الرئيسية
+    } else {
+      Get.snackbar("Error", response['message']);
+    }
+  }
+
+
+
+
 
   String? ValidatorName(String? value) {
     if (value == null || value.isEmpty) {
@@ -96,69 +123,63 @@ class LogicSinin extends GetxController {
     logic1.isPasswordVisible.value = !logic1.isPasswordVisible.value;
   }
 
-  Future<void> SignIn(String name, String email, String password) async {
-    final uri = Uri.parse("http://10.0.2.2/Signup/auth/Sign_up.php");
-
-    try {
-      final response = await http.post(uri, body: {
-        "name": name,
-        "email": email,
-        "password": password,
-      });
-
-      if (response.statusCode == 200) {
-        final result = jsonDecode(response.body);
-
-        if (result['status'] == 'ok') {
-          // final box = GetStorage();
-          // box.write('isLoggedIn', true);
-          // box.write('userEmail', email);
-          // box.write('userName', name);
-
-
-          logic1.EmailControler.clear();
-          logic1.USername.clear();
-          logic1.pass.clear();
-
-          Get.snackbar("Success", "تم تسجيل الدخول بنجاح");
-          Get.to(Home());
-        } else {
-          Get.snackbar("Error", result['message']);
-        }
-      } else {
-        Get.snackbar("Error", "فشل الاتصال بالخادم");
-      }
-    } catch (e) {
-      print("Error: $e");
-      Get.snackbar("Error", "حدث خطأ ما");
-    }
-  }
+  // Future<void> SignIn(String name, String email, String password) async {
+  //   final uri = Uri.parse("http://10.0.2.2/Signup/auth/Sign_up.php");
+  //
+  //   try {
+  //     final response = await http.post(uri, body: {
+  //       "name": name,
+  //       "email": email,
+  //       "password": password,
+  //     });
+  //
+  //     if (response.statusCode == 200) {
+  //       final result = jsonDecode(response.body);
+  //
+  //       if (result['status'] == 'ok') {
+  //         // final box = GetStorage();
+  //         // box.write('isLoggedIn', true);
+  //         // box.write('userEmail', email);
+  //         // box.write('userName', name);
+  //
+  //
+  //         logic1.EmailControler.clear();
+  //         logic1.USername.clear();
+  //         logic1.pass.clear();
+  //
+  //         Get.snackbar("Success", "تم تسجيل الدخول بنجاح");
+  //         Get.to(Home());
+  //       } else {
+  //         Get.snackbar("Error", result['message']);
+  //       }
+  //     } else {
+  //       Get.snackbar("Error", "فشل الاتصال بالخادم");
+  //     }
+  //   } catch (e) {
+  //     print("Error: $e");
+  //     Get.snackbar("Error", "حدث خطأ ما");
+  //   }
+  // }
 
   void Verificatoin() {
     if (logic1.formKey.currentState!.validate()) {
-
       Get.dialog(
         const Center(
           child: CircularProgressIndicator(
-
             color: Colors.yellow,
             backgroundColor: Colors.blue,
-            strokeWidth:5 ,
-
+            strokeWidth: 5,
           ),
         ),
         barrierDismissible: false,
         barrierColor: primary1.withOpacity(0.5),
-
       );
 
       Future.delayed(Duration(seconds: 3), () {
         Get.back(); // إغلاق مؤشر التحميل
-        SignIn(logic1.USername.text, logic1.EmailControler.text, logic1.pass.text);
 
-
+        SignUp();
       });
-
     } else {
       Get.snackbar(
         'خطأ',
