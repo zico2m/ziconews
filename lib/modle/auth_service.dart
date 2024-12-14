@@ -1,0 +1,128 @@
+import 'dart:convert';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
+
+class AuthService {
+  final String baseUrl = "http://10.0.2.2/Signup/auth/";
+final box = GetStorage();
+  Future<Map<String, dynamic>> signUp(String name, String email, String password) async {
+    final uri = Uri.parse("${baseUrl}Sign_up.php");
+
+    try {
+      final response = await http.post(uri, body: {
+        "name": name,
+        "email": email,
+        "password": password,
+      });
+
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body); // إرجاع الاستجابة كـ JSON
+      } else {
+        return {"status": "error", "message": "فشل الاتصال بالخادم"};
+      }
+    } catch (e) {
+      return {"status": "error", "message": "حدث خطأ: $e"};
+    }
+  }
+
+
+  // Future<Map<String,dynamic>>SiginIN(String email, String password) async{
+  //
+  //   final url =Uri.parse("${baseUrl}Sign_in.php");
+  //
+  //
+  //   try {
+  //     final respone  = await http.post(url,body: {
+  //       "email": email,
+  //       "password": password,
+  //     });
+  //
+  //     if(respone.statusCode==200){
+  //
+  //       return jsonDecode(respone.body);
+  //
+  //     }else{
+  //       return {"status": "error", "message": "فشل الاتصال بالخادم"};
+  //     }
+  //
+  //   }catch(e){
+  //     return {"status": "error", "message": "حدث خطأ: $e"};
+  //   }
+  // }
+
+
+  // Future<Map<String, dynamic>> signIn(String email, String password) async {
+  //   final url = Uri.parse("${baseUrl}Sign_in.php");
+  //
+  //   try {
+  //     final response = await http.post(url, body: {
+  //       "email": email,
+  //       "password": password,
+  //     });
+  //
+  //     print("Response Status: ${response.statusCode}");
+  //     print("Response Body: ${response.body}");
+  //
+  //     if (response.statusCode == 200) {
+  //       return jsonDecode(response.body);
+  //     } else {
+  //       print("Error: Failed to connect to server");
+  //       return {"status": "error", "message": "فشل الاتصال بالخادم"};
+  //     }
+  //   } catch (e) {
+  //     print("Exception: $e");
+  //     return {"status": "error", "message": "حدث خطأ: $e"};
+  //   }
+  // }
+
+
+
+  Future<Map<String, dynamic>> signIn(String email, String password) async {
+    final url = Uri.parse("${baseUrl}Sign_in.php");
+
+    try {
+      final response = await http.post(url, body: {
+        "email": email,
+        "password": password,
+      });
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        if (data["status"] == "ok") {
+          // حفظ البيانات في التخزين
+          box.write('name', data['name']);
+          box.write('email', data['email']);
+        }
+        return data;
+      } else {
+        return {"status": "error", "message": "فشل الاتصال بالخادم"};
+      }
+    } catch (e) {
+      return {"status": "error", "message": "حدث خطأ: $e"};
+    }
+  }
+
+
+}
+
+
+
+
+class NewsService {
+  final String apiUrl = "http://10.0.2.2/Signup/news.php";
+
+
+  // دالة لجلب الأخبار من API
+  Future<List<dynamic>> fetchNews() async {
+    try {
+      final response = await http.get(Uri.parse(apiUrl));
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception('Failed to load news');
+      }
+    } catch (e) {
+      throw Exception('Error: $e');
+    }
+  }
+}
