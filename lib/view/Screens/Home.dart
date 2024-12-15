@@ -8,6 +8,7 @@ import '../../Core/Conest.dart';
 import '../../controller/ControlHome.dart';
 import '../HomeNews/HomeNews.dart';
 import '../HomeNews/NewsPost.dart';
+import '../HomeNews/avorit.dart';
 
 class Home extends StatelessWidget {
   final Controlhome control = Get.put(Controlhome());
@@ -66,14 +67,14 @@ class Home extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          'News',
+                          'اخبار',
                           style: Styles.Title,
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "live News ",
+                          "الاخبار العاجلة  ",
                           textAlign: TextAlign.center,
                           style: Styles.TitleSmal,
                         )
@@ -104,12 +105,12 @@ class Home extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     child: Column(
                       children: [
-                        Text('News', style: Styles.Title),
+                        Text('اخبار', style: Styles.Title),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "Last News In The world",
+                          "اخر الاخبار العالمية",
                           textAlign: TextAlign.center,
                           style: Styles.TitleSmal,
                         )
@@ -138,7 +139,7 @@ class Home extends StatelessWidget {
           children: [
             InkWell(
                 onTap: () {
-                  // Navigator.push(context, MaterialPageRoute(builder: (k)=>News()));
+                  Navigator.push(context, MaterialPageRoute(builder: (k)=>FavoritesPage()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
@@ -146,12 +147,12 @@ class Home extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     child: Column(
                       children: [
-                        Text('News', style: Styles.Title),
+                        Text('المفضلة', style: Styles.Title),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "dnvdljvkdvjknln hvhzdvhzk cdhjvzjk ",
+                          "الصفحة الخاصه بالمفضلات",
                           textAlign: TextAlign.center,
                           style: Styles.TitleSmal,
                         )
@@ -179,12 +180,12 @@ class Home extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     child: Column(
                       children: [
-                        Text('News', style: Styles.Title),
+                        Text('الاخبار الاقتصدية', style: Styles.Title),
                         SizedBox(
                           height: 10,
                         ),
                         Text(
-                          "dnvdljvkdvjknkllk ",
+                          "اخبار الاقتصاد العالمي",
                           textAlign: TextAlign.center,
                           style: Styles.TitleSmal,
                         )

@@ -50,32 +50,12 @@ class AuthService {
       return {"status": "error", "message": "حدث خطأ: $e"};
     }
   }
-}
 
-// class NewsService {
-//   final String apiUrl = "http://10.0.2.2/Signup/news.php";
-//
-//
-//   // دالة لجلب الأخبار من API
-//   Future<List<dynamic>> fetchNews() async {
-//     try {
-//       final response = await http.get(Uri.parse(apiUrl));
-//       if (response.statusCode == 200) {
-//         return jsonDecode(response.body);
-//       } else {
-//         throw Exception('Failed to load news');
-//       }
-//     } catch (e) {
-//       throw Exception('Error: $e');
-//     }
-//   }
-// }
-
-class NewsService {
-  final String apiUrl = "http://10.0.2.2/Signup/news.php"; // رابط API
 
   // دالة لجلب الأخبار كـ Stream
   Stream<List<dynamic>> fetchNewsStream() async* {
+    final String apiUrl = "http://10.0.2.2/Signup/news.php"; // رابط API
+
     while (true) {
       try {
         final response = await http.get(Uri.parse(apiUrl));

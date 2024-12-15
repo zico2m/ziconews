@@ -10,14 +10,10 @@ import 'Conest.dart';
 import 'Function.dart';
 
 class Drwer extends StatelessWidget {
-
-
   final box = GetStorage();
-
 
   @override
   Widget build(BuildContext context) {
-
     // String name = box.read('name') ?? 'اسم غير متوفر';
     // String email = box.read('email') ?? 'بريد غير متوفر';
 
@@ -28,32 +24,22 @@ class Drwer extends StatelessWidget {
           Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         InkWell(
             onTap: () {
-              Get.to(() => Profaile(),
-                  transition: Transition.rightToLeft
-              );
+              Get.to(() => Profaile(), transition: Transition.rightToLeft);
             },
             child: UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-              color: primary2
-
-              ),
-
+              decoration: BoxDecoration(color: primary2),
               accountName: Text(
-                 box.read('name'),
-
-
-                style:TextStyle(fontSize: 20),
+                box.read('name'),
+                style: TextStyle(fontSize: 20),
               ),
               accountEmail: Text(
                 box.read('email'),
                 style: Styles.Discrib,
               ),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("assetName") ,
-
+                backgroundImage: AssetImage("assetName"),
               ),
             )),
-
         NwesRow(function: () {}, icon: Icons.home, text: "HOME"),
         Divider(),
         NwesRow(
@@ -63,23 +49,20 @@ class Drwer extends StatelessWidget {
             icon: Icons.settings,
             text: "Settinge"),
         Divider(),
-        NwesRow(function: () {}, icon: Icons.privacy_tip, text: "Security "),
+        NwesRow(
 
+            function: () {},
+            icon: Icons.privacy_tip,
+            text: "Security "),
         Divider(),
-            NwesRow(function: () {
-              Functions.Theme();
-
-             },
-                icon: Icons.dark_mode_outlined , text: "theme ",
-
-
-            ),
-
-
-            Divider(),
-
-
-
+        NwesRow(
+          function: () {
+            Functions.Theme();
+          },
+          icon: Icons.dark_mode_outlined,
+          text: "theme ",
+        ),
+        Divider(),
         NwesRow(
             function: () {
               // Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder)=>
@@ -90,7 +73,6 @@ class Drwer extends StatelessWidget {
               box.remove('email');
               Get.snackbar('تسجيل الخروج', 'تم تسجيل الخروج بنجاح');
               Get.offAll(() => LogInPage1());
-
             },
             icon: Icons.logout_sharp,
             text: "Log Out"),
@@ -121,7 +103,6 @@ Widget NwesRow({
     },
   );
 }
-
 
 // class Drwer extends StatelessWidget {
 //   final box = GetStorage();

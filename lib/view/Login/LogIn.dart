@@ -12,13 +12,10 @@ class LogInPage1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-        color: primary1,
-      ),
-      child: SingleChildScrollView(
+    return Scaffold(
+
+      backgroundColor: primary1,
+      body:  SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.only(top: 100),
           child: Form(
@@ -37,12 +34,12 @@ class LogInPage1 extends StatelessWidget {
                   height: 20,
                 ),
                 customPasswordFormField(
-                    hintText: "password",
-                    isPasswordVisible: logic1.Data.isPasswordVisible,
-                    togglePasswordVisibility: logic1.togglePasswordVisibility,
-                    validator: logic1.Validatorpassowrd,
-                    controller: logic1.Data.pass,
-                    // fillColor: primary3),
+                  hintText: "password",
+                  isPasswordVisible: logic1.Data.isPasswordVisible,
+                  togglePasswordVisibility: logic1.togglePasswordVisibility,
+                  validator: logic1.Validatorpassowrd,
+                  controller: logic1.Data.pass,
+                  // fillColor: primary3),
                 ),
                 Container(
                   margin: EdgeInsets.only(left: 250),
@@ -58,15 +55,15 @@ class LogInPage1 extends StatelessWidget {
                 ),
                 customButton(
 
-                  child: Text(
-                    'LogIN',
-                    style: TextStyle(fontSize: 20),
-                  ),
+                    child: Text(
+                      'LogIN',
+                      style: TextStyle(fontSize: 20),
+                    ),
 
-                  function: (){
-                    logic1.Verification();
+                    function: (){
+                      logic1.Verification();
 
-                  }
+                    }
                 ),
                 Container(
                   alignment: Alignment.center,
@@ -88,7 +85,8 @@ class LogInPage1 extends StatelessWidget {
             ),
           ),
         ),
-      ),
+      ) ,
+
     );
   }
 }

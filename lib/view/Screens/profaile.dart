@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../Core/Conest.dart';
 import '../../controller/controller_profail.dart';
 
 class Profaile extends StatelessWidget {
-
+  final box = GetStorage();
   final ControllerProfail cobtrol  = ControllerProfail();
 
   @override
@@ -72,7 +73,7 @@ class Profaile extends StatelessWidget {
                       maxLines: 1,
 
                       decoration: InputDecoration(
-                          hintText: "Edit name.. ",
+                          hintText: box.read('name'),
                           hintStyle: TextStyle(
                             overflow: TextOverflow.ellipsis,
 
@@ -92,7 +93,7 @@ class Profaile extends StatelessWidget {
                     width: 270,
                     child: TextFormField(
                       decoration: InputDecoration(
-                          labelText: "Edit email..",
+                          labelText: box.read('email'),
                           suffixIcon: Icon(Icons.email_outlined),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.only(topLeft: Radius.circular(30),

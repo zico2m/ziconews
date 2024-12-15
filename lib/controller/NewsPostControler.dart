@@ -1,5 +1,6 @@
   import 'package:flutter/material.dart';
   import 'package:get/get.dart';
+import 'package:intl/intl.dart';
   import '../modle/auth_service.dart';
 
   // class NewsController extends GetxController {
@@ -29,7 +30,7 @@
 
 
   class NewsController extends GetxController {
-    final NewsService newsService = NewsService();
+    final AuthService newsService = AuthService();
 
     // الأخبار كـ RxList مرتبطة بـ Stream
     var newsStream = Stream<List<dynamic>>.empty().obs;
@@ -39,4 +40,9 @@
       super.onInit();
       newsStream.value = newsService.fetchNewsStream(); // تعيين Stream عند التهيئة
     }
+  }
+
+  String formatDate(String dateString) {
+    final DateTime date = DateTime.parse(dateString);
+    return DateFormat('MM-dd-yyyy').format(date); // صيغة اليوم الشهر السنة
   }

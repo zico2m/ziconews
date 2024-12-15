@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ziconews/Core/Conest.dart';
 import '../../controller/NewsPostControler.dart';
+import '../Widgets/Widget.dart';
 import 'Detiles.dart';
 
 class NewsPage extends StatelessWidget {
@@ -33,7 +35,21 @@ class NewsPage extends StatelessWidget {
             }
 
             if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return Center(child: Text("لا توجد أخبار متاحة"));
+              return Center(
+                  child: Container(
+                width: 140,
+                child: Card(
+                    child: Row(
+                  children: [
+                    Text("لا توجد أخبار متاحة"),
+                    Icon(
+                      Icons.newspaper,
+                      size: 20,
+                      color: Colors.blueAccent,
+                    )
+                  ],
+                )),
+              ));
             }
 
             final newsList = snapshot.data!;
@@ -42,6 +58,9 @@ class NewsPage extends StatelessWidget {
               itemCount: newsList.length,
               itemBuilder: (context, index) {
                 final item = newsList[index];
+                // final String publishDate = item['datae'] ?? "
+                // تاريخ غير متوفر"; // تاريخ النشر
+                final String formattedDate = formatDate(item['datae']);
                 return GestureDetector(
                   onTap: () {
                     // الانتقال إلى صفحة التفاصيل مع الأنيميشن
@@ -83,18 +102,38 @@ class NewsPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                item['title'] ?? "عنوان غير متوفر",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 25,
+                                    backgroundImage: AssetImage(
+                                      Images.icon,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      textDirection: TextDirection.rtl,
+                                      item['title'] ?? "عنوان غير متوفر",
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.start,
                               ),
                               SizedBox(height: 8.0),
                               Text(
+                                maxLines: 3,
+                                textDirection: TextDirection.rtl,
                                 item['content'] ?? "محتوى غير متوفر",
                                 style: TextStyle(
                                   fontSize: 14,

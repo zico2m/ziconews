@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ziconews/view/Screens/profaile.dart';
 
 import '../../Core/Drawer.dart';
 import '../../controller/ControlHome.dart';
 import 'Home.dart';
-import 'Profail.dart';
+
 
 class Homabasic extends StatelessWidget {
 
@@ -19,7 +20,7 @@ class Homabasic extends StatelessWidget {
 
     final List<Widget> pages = [
       Home(),
-      Profail(),
+      Profaile(),
     ];
 
 

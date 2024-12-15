@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:like_button/like_button.dart';
 
 import '../../Core/Conest.dart';
+import '../../controller/NewsPostControler.dart';
+import 'fav.dart';
 
 class Detiles extends StatelessWidget {
-  // final String title1;
-  // final String description1;
-  // final String imagePath1;
+  final FavoritesController favoritesController = Get.put(FavoritesController());
+
   final dynamic listnews;
 
 
@@ -15,6 +18,8 @@ class Detiles extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    final String formattedDate = formatDate(listnews['datae']);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("تفاصيل الخبر"),
@@ -23,8 +28,12 @@ class Detiles extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
+
         child: ListView(
           children: [
+
+
+
             Container(
               width: double.infinity,
               height: 250,
@@ -46,6 +55,7 @@ class Detiles extends StatelessWidget {
              child: Image.network('http://10.0.2.2/Signup${listnews['imagee']}',
              errorBuilder:  (context,error,stckTrack){
                return Container(
+
                  height: 400,
                  color: Colors.grey,
                  child: Center(
@@ -56,8 +66,22 @@ class Detiles extends StatelessWidget {
                );
 
              },
+               width: 250,
+                fit: BoxFit.cover,
              ),
 
+            ),
+            SizedBox(height: 10),
+
+            Text(
+              textDirection: TextDirection.rtl,
+              "تاريخ النشر: $formattedDate",
+              style: TextStyle(
+                fontSize: 15,
+                // color: Colors.black,
+                fontWeight: FontWeight.bold,
+
+              ),
             ),
             SizedBox(height: 10),
             Column(
@@ -88,6 +112,10 @@ class Detiles extends StatelessWidget {
                     ),
                     onPressed: () {
                       // _addToFavorites(context);
+
+                      favoritesController.toggleFavorite(listnews);
+
+
                     },
                   ),
                   IconButton(
