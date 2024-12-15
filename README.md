@@ -1,7 +1,7 @@
 # ziconews
 
 ## تطبيق اخبار باستخدام لغه فلاتر مع قواعد بيانات php and getX
-#صفحة انشاء حساب 
+## صفحة انشاء حساب 
 
 ![1](https://github.com/user-attachments/assets/9b5e9d60-74e6-4fe2-a8d9-79fbef2af59e)
 
